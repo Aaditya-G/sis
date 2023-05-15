@@ -1,9 +1,26 @@
+import { type } from 'os';
 import * as redis from '../services/redis';
 
 
 export async function addData (app:any) {
-    app.message('sis add user', async ({ message , say } : {message: any; say: any})=> {
-        await redis.setValue("info:name" , "sample")
+    app.message(/^sis add user name/, async ({ message , say } : {message: string; say: Function})=> {
+        const text : string = JSON.parse(JSON.stringify(message)).text.replace("sis add user name " , '')
+        const name = text.split(' email')[0].replace("\"" , "")
+        const email = text.split('email')[1].replace("\"" , "").split('|')[1].replace(">","")
+        let info = 
+            {
+                "name" :name,
+                "email" :email,
+                "score" :0
+            }
+        
+        let infoarr = JSON.parse( await redis.getValue('info'))
+        if (!infoarr) infoarr = []
+        infoarr.push(info)
+        console.log(typeof(infoarr))
+        console.log(infoarr)
+        await redis.setValue ('info' , JSON.stringify(infoarr))
+        await say ("succesfully added data")
     }
     
 )}
