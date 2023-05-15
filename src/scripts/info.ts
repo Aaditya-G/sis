@@ -1,4 +1,3 @@
-import { type } from 'os';
 import * as redis from '../services/redis';
 
 export function info(app: any) {

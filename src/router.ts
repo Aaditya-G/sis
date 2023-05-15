@@ -4,6 +4,7 @@ import {info} from './scripts/info'
 import { greet } from './scripts/greet'
 import { getValue ,setValue} from './services/redis'
 import { addData } from './scripts/addData'
+import { help } from './scripts/help'
 
 
 
@@ -13,5 +14,6 @@ ping(app) ; echo(app)
 greet(app)
 info(app)
 addData(app)
+help(app)
 
 

@@ -1,8 +1,5 @@
 export function greet(app:any) {
-    app.message('sis', async({message, say} : {message: {user: string}; say: Function}) =>{
-        const msgObject : {text: string} = JSON.parse(JSON.stringify(message));
-        const textMsg : string = msgObject.text.toLowerCase();        
-        if(textMsg.includes("hello sis")) {
+    app.message(/^hello sis$/, async({message, say} : {message: {user: string}; say: Function}) =>{
             const timeNow: Date = new Date();
             const hoursNow: number = timeNow.getHours();
             let greetText : string = '';  
@@ -12,5 +9,4 @@ export function greet(app:any) {
             await say(greetText)
 
         }
-    })
-}
+    )}

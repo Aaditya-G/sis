@@ -1,4 +1,3 @@
-import { type } from 'os';
 import * as redis from '../services/redis';
 
 
@@ -16,11 +15,15 @@ export async function addData (app:any) {
         
         let infoarr = JSON.parse( await redis.getValue('info'))
         if (!infoarr) infoarr = []
-        infoarr.push(info)
-        console.log(typeof(infoarr))
-        console.log(infoarr)
-        await redis.setValue ('info' , JSON.stringify(infoarr))
-        await say ("succesfully added data")
+        if (!JSON.stringify(infoarr).includes(email)) {
+            infoarr.push(info)   
+            await say ("succesfully added data") 
+            await redis.setValue ('info' , JSON.stringify(infoarr))
+        }
+        else {
+            await say ("email already exists") 
+        }
+        
     }
     
 )}
