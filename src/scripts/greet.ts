@@ -1,5 +1,5 @@
 export function greet(app:any) {
-    app.message('sis', async({message, say} : {message: {user: string, ts: string}; say: any}) =>{
+    app.message('sis', async({message, say} : {message: {user: string}; say: Function}) =>{
         const msgObject : {text: string} = JSON.parse(JSON.stringify(message));
         const textMsg : string = msgObject.text.toLowerCase();        
         if(textMsg.includes("hello sis")) {

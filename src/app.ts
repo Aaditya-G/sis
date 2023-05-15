@@ -3,7 +3,7 @@ dotenv.config();
 
 import {App} from '@slack/bolt';
 import {setValue, getValue ,redisInit} from './services/redis';
-
+import { addData } from './scripts/addData';
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -22,10 +22,8 @@ async function init() {
   await redisInit();
 }
 
+
+import './router'
 init();
 
 
-
-
-
-import './router'
