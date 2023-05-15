@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import {App} from '@slack/bolt';
-import {redisInit} from './services/redis';
+import {setValue, getValue ,redisInit} from './services/redis';
 
 
 const app = new App({
@@ -12,15 +12,9 @@ const app = new App({
   appToken: process.env.SLACK_APP_TOKEN,
 });
 
-
 export function getApp() {
   return app;
 }
-
-// app.message('ping', async ({ message , say } : {message: any; say: any})=> {
-//   console.log(JSON.parse(JSON.stringify(message)).text)
-//   await say('pong');
-// });
 
 async function init() {
   await app.start(process.env.PORT || 3000);
@@ -29,5 +23,9 @@ async function init() {
 }
 
 init();
+
+
+
+
 
 import './router'

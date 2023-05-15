@@ -9,7 +9,9 @@ export async function redisInit() {
     console.log('[REDIS]', err);
   });
 
-  await client.connect();
+  await client.connect().then(()=> {
+    console.log('connected')
+  });
 }
 
 export async function redisClose() {
