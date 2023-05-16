@@ -19,6 +19,7 @@ export async function score(app:any) {
             userArr.splice(index,1)
             userArr.push(userObj)
             await redis.setValue ('info' , JSON.stringify(userArr))
+            await say ("increased score of " +userObj.name + " by 1, current score :" +userObj.score)
             break;
         } 
         if(func == "--"){
@@ -27,6 +28,7 @@ export async function score(app:any) {
             userArr.splice(index,1)
             userArr.push(userObj)
             await redis.setValue ('info' , JSON.stringify(userArr))
+            await say ("decreased score of " +userObj.name + " by 1, current score :" +userObj.score)
             break;
         } 
       }
