@@ -31,6 +31,27 @@ export async function help(app:any) {
                         type: 'mrkdwn',
                         text: "`hello sis` - _greets the user_ "
                     }
+                },
+                {
+                    type: 'section',
+                    text: { 
+                        type: 'mrkdwn',
+                        text: "`sis help` - _displays the list of available commands_ "
+                    }
+                },
+                {
+                    type: 'section',
+                    text: { 
+                        type: 'mrkdwn',
+                        text: "`sis ping` - _pong_ "
+                    }
+                },
+                {
+                    type: 'section',
+                    text: { 
+                        type: 'mrkdwn',
+                        text: "`sis echo [message]` - _returns user's message_ "
+                    }
                 }
             ]
         })

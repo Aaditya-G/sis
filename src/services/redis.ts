@@ -18,6 +18,13 @@ export async function redisClose() {
   await client.disconnect();
 }
 
+
+export async function getClient()
+{
+  return client;
+}
+
+
 function isReady(): boolean {
   if (!client.isReady) {
     console.log('[REDIS] Error: client is not ready');

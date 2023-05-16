@@ -5,6 +5,7 @@ import { greet } from './scripts/greet'
 import { getValue ,setValue} from './services/redis'
 import { addData } from './scripts/addData'
 import { help } from './scripts/help'
+import { score } from './scripts/score'
 
 
 
@@ -15,5 +16,6 @@ greet(app)
 info(app)
 addData(app)
 help(app)
+score(app)
 
 
