@@ -1,5 +1,7 @@
-export function greet(app:any) {
-    app.message(/^hello sis$/, async({message, say} : {message: {user: string}; say: Function}) =>{
+import * as type from '../types'
+
+export function greet(app:type.app) {
+    app.message(/^hello sis$/, async({message, say} : type.appMsg) =>{
             const timeNow: Date = new Date();
             const hoursNow: number = timeNow.getHours();
             let greetText : string = '';  

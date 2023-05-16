@@ -1,7 +1,7 @@
-import { stringify } from "querystring";
+import * as type from '../types';
 
-export async function help(app:any) {
-    app.message(/^sis help$/ , async ({message,say} : {message: string; say: Function}) => {
+export async function help(app:type.app) {
+    app.message(/^sis help$/ , async ({message,say} : type.appMsg) => {
         await say({
             blocks: [
                 {

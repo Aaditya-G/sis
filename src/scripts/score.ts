@@ -1,7 +1,8 @@
 import * as redis from '../services/redis';
+import * as type from '../types'
 
 export async function score(app:any) {
-    app.message(/^sis/, async ({message ,say} : {message:string , say: Function}) => {
+    app.message(/^sis/, async ({message ,say} : type.appMsg ) => {
         const text:  string = JSON.parse(JSON.stringify(message)).text.replace("sis " , "")
         const name = text.split(" ")[0];
         const func = text.split(" ")[1];

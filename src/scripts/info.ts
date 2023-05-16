@@ -1,7 +1,8 @@
+import * as type from '../types'
 import * as redis from '../services/redis';
 
-export function info(app: any) {
-  app.message(/^sis info/, async ({message, say}: {message: string; say: Function}) => {
+export function info(app: type.app) {
+  app.message(/^sis info/, async ({message, say}: type.appMsg) => {
     const name:  string = JSON.parse(JSON.stringify(message)).text.replace("sis info " , "")
     const userInfo = JSON.parse(await redis.getValue('info'));
     const userArr = (Object.values(userInfo))
